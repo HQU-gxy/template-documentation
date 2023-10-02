@@ -47,7 +47,6 @@ support `tuple`.
 
 #### Derived Types
 
-- `percent` is a `float` with a range of `[0, 1]`.
 - `datetime` is a string following [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
 - `any`. infamous `any` type. We don't do runtime type checking.
 
@@ -115,6 +114,17 @@ Interestingly Grafana supports [query variable](https://grafana.com/docs/grafana
     "type": "float",
   }
 ]
+```
+
+### Custom Formatter
+
+Just provide a function to convert the value to string. Like to [`toFixed`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed) or [toLocaleDateString](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString).
+
+It's necessary to implement something like *percentage*.
+
+```python
+def toPercentage(num:float) -> str:
+  return "{}%".format(num * 100)
 ```
 
 ## Functions
