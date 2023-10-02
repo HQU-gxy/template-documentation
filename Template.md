@@ -299,7 +299,7 @@ and get the URL.
 
 Might need a image table to store IDs.
 
-Another problem is floating images. See [*A deep dive into the CSS `float` property](https://blog.logrocket.com/deep-dive-css-float-property/).
+Another problem is floating images. See [*A deep dive into the CSS `float` property*](https://blog.logrocket.com/deep-dive-css-float-property/).
 
 ## Style
 
