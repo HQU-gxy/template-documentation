@@ -203,7 +203,7 @@ We have to implement a series of functions to convert between different types.
 If user don't want to code, we could implement a code generator. Enabling custom
 code should make it easier for us.
 
-```json
+```jsonc
 {
   "generator": "filter",
   "name": "gt_2",
@@ -280,7 +280,7 @@ Need a way to connect data to UI framework. And a suitable chart editor.
 
 Simple.
 
-```json
+```jsonc
 {
   "type": "html",
   "tagName": "img",
