@@ -61,11 +61,13 @@ The most basic data source is a constant. It's just a constant value.
 
 *(Low priority)* A python expression. It's a string. We could use [AST](https://docs.python.org/3/library/ast.html) to parse it. 
 
+A simple [`eval`](https://python-reference.readthedocs.io/en/latest/docs/functions/eval.html) could do it...
+
 #### Database
 
 ##### The easy way
 
-Hard code the columns... Even easier, we get all of the variables from API. (If there's such API)
+Hard code the `Series`... Even easier, we get all of the variables from API. (If there's such API)
 
 ##### The hard way
 
@@ -75,9 +77,9 @@ Hard code the columns... Even easier, we get all of the variables from API. (If 
 
 Let's see how other software do it. See [Grafana data sources](https://grafana.com/docs/grafana/latest/datasources/).
 
-Maybe we could borrow the [Query builder](https://grafana.com/docs/grafana/latest/datasources/mysql/#query-builder). Our target is to get some **columns** from a table. 
+Maybe we could borrow the [Query builder](https://grafana.com/docs/grafana/latest/datasources/mysql/#query-builder). Our target is to get some **Series** from a table. 
 
-We could also support reading data into `table` data type to further process the data.
+We could also support reading data into `DataFrame` data type to further process the data.
 
 Interestingly Grafana supports [query variable](https://grafana.com/docs/grafana/latest/datasources/mysql/#query-variable). We should support this too.
 
@@ -91,7 +93,7 @@ Interestingly Grafana supports [query variable](https://grafana.com/docs/grafana
         "query": "SELECT age FROM people",
       } 
     },
-    "type": "column[int]",
+    "type": "Series[int]",
   },
   {
     "name": "hospital_name",
@@ -129,7 +131,7 @@ should be our foundation for column operations.
 Function table only contains a name but its concrete implementation should be in separated file. We could have a API to provide all of the available functions
 and its type info.
 
-For safety reason only functions in the function table could be used in [`expression`](#expression).
+For safety reason only functions in the function table could be used in [`expression`](#expression).  
 
 ```python
 from typing import Callable, TypeVar
@@ -287,7 +289,7 @@ and get the URL.
 
 Might need a image table to store IDs.
 
-Another problem is floating images. See [*A deep dive into the CSS `float` property*](https://blog.logrocket.com/deep-dive-css-float-property/).
+Another problem is floating images. See [*A deep dive into the CSS `float` property](https://blog.logrocket.com/deep-dive-css-float-property/).
 
 ## Style
 
