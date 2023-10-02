@@ -1,0 +1,84 @@
+{
+  "name": "my template",
+  "variables": [
+    {
+      "name": "date",
+      "type": "datetime"
+    },
+    {
+      "name": "hospital_name",
+      "type": "string"
+    },
+    {
+      "name": "apartment_name",
+      "type": "string"
+    },
+    {
+      "name": "project_name",
+      "type": "string"
+    },
+    {
+      "name": "num_patient",
+      "type": "int"
+    },
+    // maybe with data source or calculated field
+    {
+      "name": "num_operation",
+      "type": "int",
+      "data_source": "operation",
+      // embedded sql? your choice!
+      "query": "SELECT COUNT(*) FROM operation"
+    },
+    {
+      "name": "num_operation_4",
+      "type": "int"
+    },
+    {
+      "name": "num_operation_micro",
+      "type": "int"
+    },
+    {
+      "name": "CMI",
+      "type": "float"
+    },
+    {
+      "name":"calc",
+      "type": "num",
+      "calculated": "CMI + num_operation_micro"
+    }
+    // Rest of the variables...
+  ],
+  "header": {
+    "left": "${project_name}专项分析报告",
+    "right": "${hospital_name}医院${apartment_name}部门"
+  },
+  "content": [
+    {
+      "tag": "h1",
+      "text": "总体情况"
+    },
+    {
+      "tag": "p",
+      "text": "本期中出院病例${num_patient}例。手术人数${num_operation}人，四级手术${num_operation_4}人，微创手术${num_operation_micro}人。CMI值${CMI}，其中 CMI 小于1的病人数有${query(CMI<1)}人，占比${query(CMI<1)/num_patient}；1-2的病人数${query(CMI > 1 && CMI < 2)}人，占比${query(CMI > 1 && CMI < 2) / num_patient};2-5的病人数${num_CIM_2_5 := query(CMI > 2 && CMI < 5)}人，占比${num_CIM_2_5 / num_patient};大于5的病人数${num_CIM_gt_5 := query(CMI > 5)}人,占比${num_CIM_gt_5 / num_patient}。总体来说大于2的病人数${num_CIM_gt_2 := query(CMI > 2)}人，占比${num_CIM_gt_2 / num_patient}%，有提升空间。"
+    },
+    {
+      "tag": "table"
+      // What's the data source? 
+      // How to describe the table?
+    }
+    // Rest of the content...
+  ],
+  "style":{
+    // which style need to be changed?
+    "h1":{
+      "font-size": "20px",
+      "font-weight": "bold"
+    },
+    "table":{
+      "header":{
+        "background-color": "blue"
+      }
+    }
+    // Rest of the style...
+  }
+}
