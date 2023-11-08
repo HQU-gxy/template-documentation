@@ -184,12 +184,14 @@ graph TD
 文本模板是一个包含多个表达式的文本。表达式由 `${}` 包裹起来。表达式中可以包含变量、函数调用、运算符等。
 
 ```json
-"content": [
-  {
-    "tagName": "p",
-    "text": "本期中出院病例${num_patient}例。手术人数${num_operation}人，四级手术${num_operation_4}人，微创手术${num_operation_micro}人。CMI值${CMI}，其中 CMI 小于1的病人数有${query(CMI<1)}人，占比${query(CMI<1)/num_patient}；1-2的病人数${query(CMI > 1 && CMI < 2)}人，占比${query(CMI > 1 && CMI < 2) / num_patient};2-5的病人数${num_CIM_2_5 := query(CMI > 2 && CMI < 5)}人，占比${num_CIM_2_5 / num_patient};大于5的病人数${num_CIM_gt_5 := query(CMI > 5)}人,占比${num_CIM_gt_5 / num_patient}。总体来说大于2的病人数${num_CIM_gt_2 := query(CMI > 2)}人，占比${num_CIM_gt_2 / num_patient}%，有提升空间。"
-  },
-]
+{
+  "content": [
+    {
+      "tagName": "p",
+      "text": "本期中出院病例${num_patient}例。手术人数${num_operation}人，四级手术${num_operation_4}人，微创手术${num_operation_micro}人。CMI值${CMI}，其中 CMI 小于1的病人数有${query(CMI<1)}人，占比${query(CMI<1)/num_patient}；1-2的病人数${query(CMI > 1 && CMI < 2)}人，占比${query(CMI > 1 && CMI < 2) / num_patient};2-5的病人数${num_CIM_2_5 := query(CMI > 2 && CMI < 5)}人，占比${num_CIM_2_5 / num_patient};大于5的病人数${num_CIM_gt_5 := query(CMI > 5)}人,占比${num_CIM_gt_5 / num_patient}。总体来说大于2的病人数${num_CIM_gt_2 := query(CMI > 2)}人，占比${num_CIM_gt_2 / num_patient}%，有提升空间。"
+    },
+  ]
+}
 ```
 
 解析器会将所有的表达式从文本模板中提取出来，并将它们转换为表达式表。
@@ -308,6 +310,40 @@ result = df["calculate_tax"]
 这种基于 JSON 规则生成 Python 函数的方法可以极大地简化用户的操作流程。用户无需手动编写代码或者直接生成
 JSON，只需要通过前端提供的交互界面进行操作即可。
 这种方法将复杂的数据处理过程隐藏在背后，用户只需关注自身的需求和操作，使得数据操作更加直观和易用，大大提高了用户体验。
+
+### 样式
+
+采用类似 CSS 的样式描述
+
+```json
+{
+  "style": {
+    "h1": {
+      "font-size": "20px",
+      "color": "blue"
+    },
+    "p": {
+      "font-size": "14px"  
+    }
+  },
+
+  "content": [
+    {
+      "tagName": "h1",
+      "text": "Hello World"     
+    },
+    {
+      "tagName": "p", 
+      "text": "Here is some text"
+    }
+  ]
+}
+```
+
+这样的模板设计提供了一种直观、简洁且灵活的样式管理方式。通过将样式嵌入到 JSON
+中，可以方便地为每个组件或元素定义独特的样式，增强了代码的可读性和可维护性。
+同时，该设计方法可以实现 CSS 的模块化，更好地管理和组织样式代码，使其更易于理解和复用。
+
 
 ## 模板存储
 
