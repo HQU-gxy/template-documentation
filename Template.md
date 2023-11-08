@@ -306,4 +306,3 @@ Another problem is floating images. See [*A deep dive into the CSS `float` prope
 [CSS parser/stringifier for Node.js](https://github.com/reworkcss/css).
 
 CSS in JSON. Nothing special.
-
