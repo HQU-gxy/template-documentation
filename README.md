@@ -249,12 +249,12 @@ graph TD
   "type": "report",
   "chart": {
     "type": "bar",
-    "x": ["January", "February", "March", "April"], 
+    "x": ["一月", "二月", "三月", "四月"], 
     "y": [2000, 3000, 2500, 3500]
   },
   "table": {
     "columns": [
-      {"label": "月份", "field": ["January", "February", "March", "April"]},
+      {"label": "月份", "field": ["一月", "二月", "三月", "四月"]},
       {"label": "收入", "field": [2000, 3000, 2500, 3500]} 
     ]
   }
