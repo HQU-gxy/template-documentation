@@ -228,22 +228,25 @@ graph TD
 在这个过程完成之后，表达式表就可以送入下一个步骤——AST解析器进行进一步的解析和求值。
 
 对于图表和表格等可视化组件,我们可以使用类似的方式来定义模板。
-例如，一个模板可能定义了一个图表和一个表格：
+例如，假设该模版内定义了这样一个插图以及表格：
 
 ```json
 {
-  "type": "report",
-  "chart": {
-    "type": "bar",
-    "x": "${month}", 
-    "y": "${revenue}"
-  },
-  "table": {
-    "columns": [
-      {"label": "月份", "field": "${month}"},
-      {"label": "收入", "field": "${revenue}"} 
-    ]
-  }
+  "content": [{
+      "type": "chart",
+      "chart_type": "bar",
+      "data": {
+        "x": "${month}", 
+        "y": "${revenue}"
+      },
+    },
+    {
+      "type": "table",
+      "data": [
+        {"label": "月份", "field": "${month}"},
+        {"label": "收入", "field": "${revenue}"} 
+      ]
+    }]
 }
 ```
 
@@ -253,18 +256,21 @@ graph TD
 
 ```json
 {
-  "type": "report",
-  "chart": {
-    "type": "bar",
-    "x": ["一月", "二月", "三月", "四月"], 
-    "y": [2000, 3000, 2500, 3500]
-  },
-  "table": {
-    "columns": [
-      {"label": "月份", "field": ["一月", "二月", "三月", "四月"]},
-      {"label": "收入", "field": [2000, 3000, 2500, 3500]} 
-    ]
-  }
+  "content": [{
+      "type": "chart",
+      "chart_type": "bar",
+      "data": {
+        "x": ["一月", "二月", "三月", "四月"], 
+        "y": [10000, 15000, 18000, 20000]
+      },
+    },
+    {
+      "type": "table",
+      "data": [
+        {"label": "月份", "field": ["一月", "二月", "三月", "四月"]},
+        {"label": "收入", "field": [10000, 15000, 18000, 20000]} 
+      ]
+    }]
 }
 ```
 
