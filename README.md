@@ -21,7 +21,7 @@ graph TD
   VariableTable --> |Lazy Evaluation| Evaluation{Evaluation}
   Functions --> Evaluation
 
-  Evaluation --> EvaluatedVars[(Evaluated Variables <br/> Table)]
+  Evaluation --> EvaluatedVars[(Evaluated Expressions <br/> Table)]
 
   TextTemplate --> RawText
   EvaluatedVars --> |Replace| RawText[Raw Text]
@@ -388,7 +388,7 @@ JSON，只需要通过前端提供的交互界面进行操作即可。
 4. **`DELETE /template/:name`**：此端点删除特定模板。使用 `:name` 路径参数构造 JSON 文件的文件路径。如果文件存在并且是 JSON 文件，则删除它。如果文件不存在或不是 JSON 文件，则返回错误。
 
 其正式接口将使用 [Swagger](https://swagger.io/) 或 [OpenAPI](https://www.openapis.org/) 规范来定义。
-亦可考虑添加版本控制功能, 以维护修改历史, 支持回滚到旧版本。
+亦可为模版添加添加版本控制功能, 以维护修改历史, 支持回滚模版到任意版本。
 
 ## 用户界面
 
