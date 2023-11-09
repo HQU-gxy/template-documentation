@@ -1,3 +1,9 @@
+> [!NOTE]
+> This document is a record of the conversation between me and
+[GPT-4](https://openai.com/research/gpt-4) and [Claud
+2](https://www.anthropic.com/index/claude-2).
+The conversation might be edited for clarity and brevity but still interesting.
+
 ## Summary
 
 Here is a summary of the template engine architecture and components we have mapped out so far:

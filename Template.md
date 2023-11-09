@@ -1,3 +1,6 @@
+> [!NOTE]
+> This document is an old work and should only be used as a reference.
+
 # Template Design
 
 Guess we have to reinvent some wheel. Basically we are doing a [BI](https://en.wikipedia.org/wiki/Business_intelligence) tool.
